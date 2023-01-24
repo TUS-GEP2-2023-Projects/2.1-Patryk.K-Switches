@@ -12,6 +12,7 @@ public class Switch : MonoBehaviour
     public Sprite onSprite;
 
     private SpriteRenderer switchSpriteRenderer;
+    private CanUseSwitches canUseSwitches;
 
     private void Start()
     {
@@ -29,7 +30,6 @@ public class Switch : MonoBehaviour
         switch (switchType)
         {
             case "Automatic":
-
                 switch (switchStatus)
                 {
                     case "OFF":
@@ -39,27 +39,31 @@ public class Switch : MonoBehaviour
                         switchSpriteRenderer.sprite = onSprite;
                         break;
                 }
-
                 break;
+
             case "Manual":
-
-                switch (switchStatus)
+                if (Input.GetKeyDown(KeyCode.Space) && canUseSwitches.status == 1 && switchStatus == "OFF")
                 {
-                    case "OFF":
-                        switchSpriteRenderer.sprite = offSprite;
-                        break;
-                    case "ON":
-                        switchSpriteRenderer.sprite = onSprite;
-                        break;
+                    switchStatus = "ON";
                 }
-
+                else if (Input.GetKeyDown(KeyCode.Space) && canUseSwitches.status == 1 && switchStatus == "ON")
+                {
+                    switchStatus = "OFF";
+                }
                 break;
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        canUseSwitches = collision.GetComponent<CanUseSwitches>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (switchType == "Automatic")
+        canUseSwitches = collision.GetComponent<CanUseSwitches>();
+
+        if (switchType == "Automatic" && canUseSwitches.status == 1)
         {
             switchStatus = "ON";
         }
@@ -67,7 +71,9 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (switchType == "Automatic")
+        canUseSwitches = collision.GetComponent<CanUseSwitches>();
+
+        if (switchType == "Automatic" && canUseSwitches.status == 1)
         {
             switchStatus = "OFF";
         }

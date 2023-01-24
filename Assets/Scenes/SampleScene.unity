@@ -372,6 +372,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1378201765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3833328719046973262, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+  m_PrefabInstance: {fileID: 2065571420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407226229
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +495,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143008517}
     m_Modifications:
+    - target: {fileID: 3044110352218293696, guid: c71db06a334383d43a8c78fa6bd5268a, type: 3}
+      propertyPath: S
+      value: 
+      objectReference: {fileID: 2065571422}
+    - target: {fileID: 3044110352218293696, guid: c71db06a334383d43a8c78fa6bd5268a, type: 3}
+      propertyPath: lightSwitch
+      value: 
+      objectReference: {fileID: 1378201765}
     - target: {fileID: 3044110352218293697, guid: c71db06a334383d43a8c78fa6bd5268a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -543,6 +556,11 @@ PrefabInstance:
 --- !u!4 &1408143403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3044110352218293697, guid: c71db06a334383d43a8c78fa6bd5268a, type: 3}
+  m_PrefabInstance: {fileID: 1408143402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1464477689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3044110352218293699, guid: c71db06a334383d43a8c78fa6bd5268a, type: 3}
   m_PrefabInstance: {fileID: 1408143402}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1681564822
@@ -798,6 +816,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143008517}
     m_Modifications:
+    - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: lightBulb
+      value: 
+      objectReference: {fileID: 1464477689}
+    - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: switchType
+      value: Manual
+      objectReference: {fileID: 0}
     - target: {fileID: 3833328719046973261, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -846,6 +872,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch (B)
       objectReference: {fileID: 0}
+    - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: m_Size.x
+      value: 3.3169677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: m_Size.y
+      value: 3.3169677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.008802056
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
 --- !u!4 &2065571421 stripped
@@ -853,6 +891,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3833328719046973261, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
   m_PrefabInstance: {fileID: 2065571420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2065571422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+  m_PrefabInstance: {fileID: 2065571420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378201765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ea243bbb6151a40a6aa7456a0d9e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3044110352693021163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,6 +978,10 @@ PrefabInstance:
       propertyPath: lightBulb
       value: 
       objectReference: {fileID: 1817496616}
+    - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: switchType
+      value: Automatic
+      objectReference: {fileID: 0}
     - target: {fileID: 3833328719046973261, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: m_RootOrder
       value: 1
