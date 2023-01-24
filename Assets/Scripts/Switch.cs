@@ -54,6 +54,16 @@ public class Switch : MonoBehaviour
                             switchStatus = "OFF";
                         }
                     }
+
+                    switch (switchStatus)
+                    {
+                        case "OFF":
+                            switchSpriteRenderer.sprite = offSprite;
+                            break;
+                        case "ON":
+                            switchSpriteRenderer.sprite = onSprite;
+                            break;
+                    }
                 }
                 break;
         }
