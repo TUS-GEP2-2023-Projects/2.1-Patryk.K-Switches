@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    //connect switch to a lightbulb
     public GameObject lightBulb;
     public string switchStatus;
+    public string switchType;
 
     public Sprite offSprite;
     public Sprite onSprite;
@@ -17,18 +17,59 @@ public class Switch : MonoBehaviour
     {
         switchStatus = "OFF";
         switchSpriteRenderer = this.GetComponent<SpriteRenderer>();
+
+        if(switchType == "")
+        {
+            switchType = "Automatic";
+        }
     }
 
     private void Update()
     {
-        switch (switchStatus)
+        switch (switchType)
         {
-            case "OFF":
-                switchSpriteRenderer.sprite = offSprite;
+            case "Automatic":
+
+                switch (switchStatus)
+                {
+                    case "OFF":
+                        switchSpriteRenderer.sprite = offSprite;
+                        break;
+                    case "ON":
+                        switchSpriteRenderer.sprite = onSprite;
+                        break;
+                }
+
                 break;
-            case "ON":
-                switchSpriteRenderer.sprite = onSprite;
+            case "Manual":
+
+                switch (switchStatus)
+                {
+                    case "OFF":
+                        switchSpriteRenderer.sprite = offSprite;
+                        break;
+                    case "ON":
+                        switchSpriteRenderer.sprite = onSprite;
+                        break;
+                }
+
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (switchType == "Automatic")
+        {
+            switchStatus = "ON";
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (switchType == "Automatic")
+        {
+            switchStatus = "OFF";
         }
     }
 }
