@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    public GameObject lightBulb;
     public string switchStatus;
     public string switchType;
 
@@ -12,11 +11,10 @@ public class Switch : MonoBehaviour
     public Sprite onSprite;
 
     private SpriteRenderer switchSpriteRenderer;
-    private CanUseSwitches canUseSwitches;
+    private CanUseSwitches collisionCanUseSwitches;
 
     private void Start()
     {
-        switchStatus = "OFF";
         switchSpriteRenderer = this.GetComponent<SpriteRenderer>();
 
         if(switchType == "")
@@ -42,13 +40,16 @@ public class Switch : MonoBehaviour
                 break;
 
             case "Manual":
-                if (Input.GetKeyDown(KeyCode.Space) && canUseSwitches.status == 1 && switchStatus == "OFF")
+                if(Input.GetKeyDown(KeyCode.Space) && collisionCanUseSwitches.status == 1)
                 {
-                    switchStatus = "ON";
-                }
-                else if (Input.GetKeyDown(KeyCode.Space) && canUseSwitches.status == 1 && switchStatus == "ON")
-                {
-                    switchStatus = "OFF";
+                    if (switchStatus == "OFF")
+                    {
+                        switchStatus = "ON";
+                    }
+                    else if (switchStatus == "ON")
+                    {
+                        switchStatus = "OFF";
+                    }
                 }
                 break;
         }
@@ -56,26 +57,40 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        canUseSwitches = collision.GetComponent<CanUseSwitches>();
+        collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        canUseSwitches = collision.GetComponent<CanUseSwitches>();
-
-        if (switchType == "Automatic" && canUseSwitches.status == 1)
+        collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
+        switch(switchType)
         {
-            switchStatus = "ON";
+            case "Automatic":
+                if (collisionCanUseSwitches.status == 1)
+                {
+                    switchStatus = "ON";
+                }
+                break;
+            case "Manual":
+                //Do Nothing, switch requires player input
+                break;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        canUseSwitches = collision.GetComponent<CanUseSwitches>();
-
-        if (switchType == "Automatic" && canUseSwitches.status == 1)
+        collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
+        switch (switchType)
         {
-            switchStatus = "OFF";
+            case "Automatic":
+                if (collisionCanUseSwitches.status == 1)
+                {
+                    switchStatus = "OFF";
+                }
+                break;
+            case "Manual":
+                //Do Nothing, switch requires player input
+                break;
         }
     }
 }

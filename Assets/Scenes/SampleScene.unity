@@ -824,6 +824,10 @@ PrefabInstance:
       propertyPath: switchType
       value: Manual
       objectReference: {fileID: 0}
+    - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: switchStatus
+      value: ON
+      objectReference: {fileID: 0}
     - target: {fileID: 3833328719046973261, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -981,6 +985,10 @@ PrefabInstance:
     - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: switchType
       value: Automatic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833328719046973250, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
+      propertyPath: switchStatus
+      value: OFF
       objectReference: {fileID: 0}
     - target: {fileID: 3833328719046973261, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: m_RootOrder
