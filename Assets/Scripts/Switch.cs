@@ -31,7 +31,6 @@ public class Switch : MonoBehaviour
         switch (switchType)
         {
             case SwitchType.Automatic:
-
                 switch (switchStatus)
                 {
                     case "OFF":
@@ -42,8 +41,6 @@ public class Switch : MonoBehaviour
                         break;
                 }
             break;
-
-
 
             case SwitchType.Manual:
 
@@ -96,8 +93,6 @@ public class Switch : MonoBehaviour
                 }
             break;
 
-
-
             case SwitchType.Manual:
                 //Do Nothing, switch requires player input
             break;
@@ -118,14 +113,11 @@ public class Switch : MonoBehaviour
                 }
             break;
 
-
-
             case SwitchType.Manual:
                 if (collisionCanUseSwitches.status == 1)
                 {
                     collisionCanUseSwitches = null;
                 }
-                
             break;
         }
     }
