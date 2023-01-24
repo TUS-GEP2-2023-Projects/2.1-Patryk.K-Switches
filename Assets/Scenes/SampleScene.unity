@@ -873,14 +873,6 @@ PrefabInstance:
       value: Switch (B)
       objectReference: {fileID: 0}
     - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
-      propertyPath: m_Size.x
-      value: 3.3169677
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
-      propertyPath: m_Size.y
-      value: 3.3169677
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833328719046973263, guid: 78fd0a29d3768bc48b6cf483668f6403, type: 3}
       propertyPath: m_Offset.x
       value: 0.008802056
       objectReference: {fileID: 0}

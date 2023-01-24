@@ -24,11 +24,14 @@ public class Switch : MonoBehaviour
         switchSpriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
+
+
     private void Update()
     {
         switch (switchType)
         {
             case SwitchType.Automatic:
+
                 switch (switchStatus)
                 {
                     case "OFF":
@@ -38,10 +41,23 @@ public class Switch : MonoBehaviour
                         switchSpriteRenderer.sprite = onSprite;
                         break;
                 }
-                break;
+            break;
+
+
 
             case SwitchType.Manual:
-                if(Input.GetKeyDown(KeyCode.Space) && collisionCanUseSwitches != null)
+
+                switch (switchStatus)
+                {
+                    case "OFF":
+                        switchSpriteRenderer.sprite = offSprite;
+                        break;
+                    case "ON":
+                        switchSpriteRenderer.sprite = onSprite;
+                        break;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) && collisionCanUseSwitches != null)
                 {
                     if(collisionCanUseSwitches.status == 1)
                     {
@@ -54,25 +70,19 @@ public class Switch : MonoBehaviour
                             switchStatus = "OFF";
                         }
                     }
-
-                    switch (switchStatus)
-                    {
-                        case "OFF":
-                            switchSpriteRenderer.sprite = offSprite;
-                            break;
-                        case "ON":
-                            switchSpriteRenderer.sprite = onSprite;
-                            break;
-                    }
                 }
-                break;
+            break;
         }
     }
+
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,12 +94,17 @@ public class Switch : MonoBehaviour
                 {
                     switchStatus = "ON";
                 }
-                break;
+            break;
+
+
+
             case SwitchType.Manual:
                 //Do Nothing, switch requires player input
-                break;
+            break;
         }
     }
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -101,14 +116,17 @@ public class Switch : MonoBehaviour
                 {
                     switchStatus = "OFF";
                 }
-                break;
+            break;
+
+
+
             case SwitchType.Manual:
                 if (collisionCanUseSwitches.status == 1)
                 {
                     collisionCanUseSwitches = null;
                 }
                 
-                break;
+            break;
         }
     }
 }
