@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SwitchType
+{
+    Automatic = 0,
+    Manual = 1
+}
+
 public class Switch : MonoBehaviour
 {
     public string switchStatus;
-    public string switchType;
+    public SwitchType switchType;
 
     public Sprite offSprite;
     public Sprite onSprite;
@@ -16,18 +22,13 @@ public class Switch : MonoBehaviour
     private void Start()
     {
         switchSpriteRenderer = this.GetComponent<SpriteRenderer>();
-
-        if(switchType == "")
-        {
-            switchType = "Automatic";
-        }
     }
 
     private void Update()
     {
         switch (switchType)
         {
-            case "Automatic":
+            case SwitchType.Automatic:
                 switch (switchStatus)
                 {
                     case "OFF":
@@ -39,16 +40,19 @@ public class Switch : MonoBehaviour
                 }
                 break;
 
-            case "Manual":
-                if(Input.GetKeyDown(KeyCode.Space) && collisionCanUseSwitches.status == 1)
+            case SwitchType.Manual:
+                if(Input.GetKeyDown(KeyCode.Space) && collisionCanUseSwitches != null)
                 {
-                    if (switchStatus == "OFF")
+                    if(collisionCanUseSwitches.status == 1)
                     {
-                        switchStatus = "ON";
-                    }
-                    else if (switchStatus == "ON")
-                    {
-                        switchStatus = "OFF";
+                        if (switchStatus == "OFF")
+                        {
+                            switchStatus = "ON";
+                        }
+                        else if (switchStatus == "ON")
+                        {
+                            switchStatus = "OFF";
+                        }
                     }
                 }
                 break;
@@ -65,13 +69,13 @@ public class Switch : MonoBehaviour
         collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
         switch(switchType)
         {
-            case "Automatic":
+            case SwitchType.Automatic:
                 if (collisionCanUseSwitches.status == 1)
                 {
                     switchStatus = "ON";
                 }
                 break;
-            case "Manual":
+            case SwitchType.Manual:
                 //Do Nothing, switch requires player input
                 break;
         }
@@ -82,14 +86,18 @@ public class Switch : MonoBehaviour
         collisionCanUseSwitches = collision.GetComponent<CanUseSwitches>();
         switch (switchType)
         {
-            case "Automatic":
+            case SwitchType.Automatic:
                 if (collisionCanUseSwitches.status == 1)
                 {
                     switchStatus = "OFF";
                 }
                 break;
-            case "Manual":
-                //Do Nothing, switch requires player input
+            case SwitchType.Manual:
+                if (collisionCanUseSwitches.status == 1)
+                {
+                    collisionCanUseSwitches = null;
+                }
+                
                 break;
         }
     }

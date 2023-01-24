@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightBulb : MonoBehaviour
 {
     public GameObject lightSwitch;
-    public Switch S;
+    public Switch connectedSwitch;
 
     public Sprite offSprite;
     public Sprite onSprite;
@@ -14,13 +14,13 @@ public class LightBulb : MonoBehaviour
 
     private void Start()
     {
-        S = lightSwitch.GetComponent<Switch>();
+        connectedSwitch = lightSwitch.GetComponent<Switch>();
         lightSpriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     public void Update()
     {
-        switch (S.switchStatus)
+        switch (connectedSwitch.switchStatus)
         {
             case "OFF":
                 lightSpriteRenderer.sprite = offSprite;

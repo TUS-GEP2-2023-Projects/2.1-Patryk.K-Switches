@@ -124,8 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ea243bbb6151a40a6aa7456a0d9e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightBulb: {fileID: 0}
-  switchStatus: 
-  switchType: 
+  switchStatus: OFF
+  switchType: 0
   offSprite: {fileID: 21300000, guid: a2b9202a7522a994687eb0d95feafc69, type: 3}
   onSprite: {fileID: 21300000, guid: 2b6d61b9044b375439909e17cce8a05f, type: 3}
