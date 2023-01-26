@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class LightBulb : MonoBehaviour
 {
-    public GameObject lightSwitch;
     public Switch connectedSwitch;
 
     public Sprite offSprite;
     public Sprite onSprite;
-
     private SpriteRenderer lightSpriteRenderer;
 
     private void Start()
     {
-        connectedSwitch = lightSwitch.GetComponent<Switch>();
         lightSpriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
@@ -22,10 +19,10 @@ public class LightBulb : MonoBehaviour
     {
         switch (connectedSwitch.switchStatus)
         {
-            case "OFF":
+            case SwitchStatus.OFF:
                 lightSpriteRenderer.sprite = offSprite;
                 break;
-            case "ON":
+            case SwitchStatus.ON:
                 lightSpriteRenderer.sprite = onSprite;
                 break;
         }
